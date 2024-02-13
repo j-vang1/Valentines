@@ -66,7 +66,7 @@
     <div class="container">
         <h1>Will You Be My Valentine?</h1>
         <button id="yesButton">Yes</button>
-        <button id="noButton" onclick="growYesButton();moveButton(); shrinkNoButton();">No</button>
+        <button id="noButton" onclick="growYesButton();moveButton();">No</button>
 
     </div>
 
@@ -74,7 +74,7 @@
         var currentButtonSize = 20; // Initial size of the Yes button
         var maxButtonSize = 0; // Maximum size to fill the screen
         var buttonGrowIncrement = 50; // Increment for growing the button
-	var buttonShrinkIncrement = -200
+	
         var hoverCount = 0; // Counter for the number of times "No" button is hovered
 
 function moveButton() {
@@ -113,18 +113,7 @@ function moveButton() {
                 hoverCount = 0;
             }
         }
-	       function shrinkNoButton() {
-            var noButton = document.getElementById("noButton");
-            var containerWidth = window.innerWidth;
-            var containerHeight = window.innerHeight;
-            if (maxButtonSize === 0) {
-                maxButtonSize = Math.min(containerWidth, containerHeight) * 0.8;
-            }
-            currentButtonSize += buttonShrinkIncrement;
-            currentButtonSize = Math.min(currentButtonSize, maxButtonSize);
-            noButton.style.width = currentButtonSize + "px";
-            noButton.style.height = currentButtonSize + "px";
-        }
+	     
 
 
         document.getElementById("yesButton").addEventListener("click", function() {
