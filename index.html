@@ -1,3 +1,4 @@
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <link href="https://fonts.cdnfonts.com/css/romantic" rel="stylesheet">
@@ -5,55 +6,55 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Be My Valentines</title>
     <style>
-   body {
+        body {
             font-family: 'Romantic', sans-serif;
             text-align: center;
             background-image: url('Theme.png'); /* Change the URL to the new background image */
             background-size: cover; /* Adjust as needed */
             background-repeat: no-repeat;
             overflow: hidden;
+            margin: 0; /* Remove default margin */
+            padding: 0; /* Remove default padding */
         }
         .container {
-            margin-top: 100px;
+            margin-top: 20%; /* Adjust margin-top for spacing */
         }
         h1 {
             color: #000000;
-	    font-size: 200px;
+            font-size: 8vw; /* Responsive font size */
+            margin-bottom: 20px; /* Add spacing below the heading */
         }
         button {
             margin: 10px;
-            padding: 10px 20px;
-            font-size: 16px;
+            padding: 15px 30px; /* Increase padding for touch-friendly buttons */
+            font-size: 4vw; /* Responsive font size */
             cursor: pointer;
-            position: absolute;
+            position: relative; /* Change to relative positioning */
+            display: inline-block; /* Change to inline-block to allow wrapping */
         }
-	#yesButton {
+        #yesButton {
             font-family: 'Romantic', sans-serif;
-            left: 50%;
-	    top: 30%;
-            transform: translateX(-50%);
             transition: all 0.5s ease;
             background-image: url('heart.png');
             background-size: contain;
             background-repeat: no-repeat;
-            width: 100px; /* Adjust as needed */
-            height: 100px; /* Adjust as needed */
-            font-size: 50px; /* Set font size to 50 */
+            width: 20vw; /* Responsive width */
+            height: 20vw; /* Responsive height */
+            font-size: 10vw; /* Responsive font size */
         }
         #noButton {
             font-family: 'Romantic', sans-serif;
-            left: 80%;
             transition: all 0.5s ease;
             background-image: url('brokenheart1.png');
             background-size: contain;
             background-repeat: no-repeat;
-            width: 100px; /* Adjust as needed */
-            height: 100px; /* Adjust as needed */
-            font-size: 50px; /* Set font size to 50 */
+            width: 20vw; /* Responsive width */
+            height: 20vw; /* Responsive height */
+            font-size: 10vw; /* Responsive font size */
         }
         .heart {
             position: absolute;
-            width: 50px;
+            width: 5vw; /* Responsive width */
             height: auto;
             animation: float 5s linear infinite;
         }
@@ -62,10 +63,44 @@
                 transform: translateY(0);
             }
             50% {
-                transform: translateY(-50px);
+                transform: translateY(-5vw); /* Responsive floating */
             }
             100% {
                 transform: translateY(0);
+            }
+        }
+
+        /* Media query for smaller screens */
+        @media (max-width: 600px) {
+            .container {
+                margin-top: 30%; /* Adjust margin-top for smaller screens */
+            }
+            h1 {
+                font-size: 12vw; /* Adjust font size for smaller screens */
+            }
+            button {
+                padding: 20px 40px; /* Adjust padding for smaller screens */
+                font-size: 6vw; /* Adjust font size for smaller screens */
+            }
+            #yesButton, #noButton {
+                width: 40vw; /* Adjust width for smaller screens */
+                height: 40vw; /* Adjust height for smaller screens */
+                font-size: 20vw; /* Adjust font size for smaller screens */
+            }
+            .heart {
+                width: 10vw; /* Adjust width for smaller screens */
+                animation-duration: 8s; /* Adjust animation duration for smaller screens */
+            }
+            @keyframes float {
+                0% {
+                    transform: translateY(0);
+                }
+                50% {
+                    transform: translateY(-10vw); /* Responsive floating */
+                }
+                100% {
+                    transform: translateY(0);
+                }
             }
         }
     </style>
@@ -75,17 +110,16 @@
         <h1>Be My Valentines</h1>
         <button id="yesButton">Yes</button>
         <button id="noButton" onclick="growYesButton();moveButton();">No</button>
-
     </div>
 
     <script>
         var currentButtonSize = 20; // Initial size of the Yes button
         var maxButtonSize = 1000; // Maximum size to fill the screen
         var buttonGrowIncrement = 50; // Increment for growing the button
-	
+    
         var hoverCount = 0; // Counter for the number of times "No" button is hovered
 
-function moveButton() {
+        function moveButton() {
             var button = document.getElementById("noButton");
             var containerWidth = window.innerWidth - button.offsetWidth;
             var containerHeight = window.innerHeight - button.offsetHeight;
@@ -121,8 +155,6 @@ function moveButton() {
                  hoverCount = 0;
             }
         }
-	     
-
 
         document.getElementById("yesButton").addEventListener("click", function() {
             alert(":)))))");
@@ -134,23 +166,23 @@ function moveButton() {
         }
 
         // Function to create a heart
-     function createHeart() {
-    var heart = new Image();
-    // Array of image paths
-    var imagePaths = [
-        "sanrio.png",
-        "sanrio1.png",
-        "sanrio2.png",
-        // Add more image paths as needed
-    ];
-    // Randomly select an image path
-    var randomIndex = Math.floor(Math.random() * imagePaths.length);
-    heart.src = imagePaths[randomIndex];
-    heart.className = "heart";
-    heart.style.left = Math.random() * window.innerWidth + "px";
-    heart.style.top = Math.random() * window.innerHeight + "px";
-    document.body.appendChild(heart);
-}
+        function createHeart() {
+            var heart = new Image();
+            // Array of image paths
+            var imagePaths = [
+                "sanrio.png",
+                "sanrio1.png",
+                "sanrio2.png",
+                // Add more image paths as needed
+            ];
+            // Randomly select an image path
+            var randomIndex = Math.floor(Math.random() * imagePaths.length);
+            heart.src = imagePaths[randomIndex];
+            heart.className = "heart";
+            heart.style.left = Math.random() * window.innerWidth + "px";
+            heart.style.top = Math.random() * window.innerHeight + "px";
+            document.body.appendChild(heart);
+        }
     </script>
 </body>
 </html>
