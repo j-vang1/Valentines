@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Will You Be My Valentine?</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            background-color: #f9f7f7;
+            overflow: hidden;
+        }
+        .container {
+            margin-top: 100px;
+        }
+        h1 {
+            color: #ff6b6b;
+        }
+        button {
+            margin: 10px;
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+            position: absolute;
+        }
+        #yesButton {
+            left: 50%;
+            transform: translateX(-50%);
+        }
+        .heart {
+            position: absolute;
+            width: 30px;
+            height: auto;
+            animation: float 5s linear infinite;
+        }
+        @keyframes float {
+            0% {
+                transform: translateY(0);
+            }
+            50% {
+                transform: translateY(-50px);
+            }
+            100% {
+                transform: translateY(0);
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Will You Be My Valentine?</h1>
+        <button id="yesButton">Yes</button>
+        <button id="noButton" onmousemove="moveButton()">No</button>
+    </div>
+
+    <script>
+        function moveButton() {
+            var button = document.getElementById("noButton");
+            var containerWidth = window.innerWidth - button.offsetWidth;
+            var containerHeight = window.innerHeight - button.offsetHeight;
+            var randomX = Math.max(0, Math.random() * containerWidth);
+            var randomY = Math.max(0, Math.random() * containerHeight);
+            button.style.left = randomX + "px";
+            button.style.top = randomY + "px";
+        }
+
+        document.getElementById("yesButton").addEventListener("click", function() {
+            alert("That's wonderful! Happy Valentine's Day!");
+        });
+
+        // Create hearts
+        for (var i = 0; i < 10; i++) {
+            createHeart();
+        }
+
+        // Function to create a heart
+        function createHeart() {
+            var heart = new Image();
+            // Replace 'your_image_path.png' with the actual path to your heart image
+            heart.src = "file:///C:\Users\John\Desktop\Websitetest\sanrio.jpg";
+            heart.className = "heart";
+            heart.style.left = Math.random() * window.innerWidth + "px";
+            heart.style.top = Math.random() * window.innerHeight + "px";
+            document.body.appendChild(heart);
+        }
+    </script>
+</body>
+</html>

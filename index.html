@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Will You Be My Valentine?</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            background-color: #f3d4d4;
+            overflow: hidden;
+        }
+        .container {
+            margin-top: 100px;
+        }
+        h1 {
+            color: #ff6b6b;
+        }
+        button {
+            margin: 10px;
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+            position: absolute;
+        }
+        #yesButton {
+            left: 30%;
+            transform: translateX(-50%);
+            transition: all 0.5s ease;
+        }
+        #noButton {
+            transition: all 0.5s ease;
+
+	background-image: url('file:///C:/Users/John/Desktop/Websitetest/templates/images/brokenheart.png');
+            background-size: contain;
+            background-repeat: no-repeat;
+            width: 100px; /* Adjust as needed */
+            height: 100px; /* Adjust as needed */
+        }
+        .heart {
+            position: absolute;
+            width: 50px;
+            height: auto;
+            animation: float 5s linear infinite;
+        }
+        @keyframes float {
+            0% {
+                transform: translateY(0);
+            }
+            50% {
+                transform: translateY(-50px);
+            }
+            100% {
+                transform: translateY(0);
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Will You Be My Valentine?</h1>
+        <button id="yesButton">Yes</button>
+        <button id="noButton" onmouseover="growYesButton(); moveButton()">No</button>
+
+    </div>
+
+    <script>
+        var currentButtonSize = 20; // Initial size of the Yes button
+        var maxButtonSize = 0; // Maximum size to fill the screen
+        var buttonGrowIncrement = 50; // Increment for growing the button
+        var hoverCount = 0; // Counter for the number of times "No" button is hovered
+
+function moveButton() {
+            var button = document.getElementById("noButton");
+            var containerWidth = window.innerWidth - button.offsetWidth;
+            var containerHeight = window.innerHeight - button.offsetHeight;
+            var randomX = Math.max(0, Math.random() * containerWidth);
+            var randomY = Math.max(0, Math.random() * containerHeight);
+            button.style.left = randomX + "px";
+            button.style.top = randomY + "px";
+        }
+
+        function growYesButton() {
+            hoverCount++; // Increment hover count
+            if (hoverCount === 1) { // Check if 5th hover
+                var yesButton = document.getElementById("yesButton");
+                var containerWidth = window.innerWidth;
+                var containerHeight = window.innerHeight;
+
+                // Calculate the maximum button size to fill the screen
+                if (maxButtonSize === 0) {
+                    maxButtonSize = Math.min(containerWidth, containerHeight) * 0.8; // 80% of the smaller dimension
+                }
+
+                // Increase the current button size by the increment
+                currentButtonSize += buttonGrowIncrement;
+
+                // Ensure the current size does not exceed the maximum size
+                currentButtonSize = Math.min(currentButtonSize, maxButtonSize);
+
+                // Apply the new size to the button
+                yesButton.style.width = currentButtonSize + "px";
+                yesButton.style.height = currentButtonSize + "px";
+
+                // Reset hover count
+                hoverCount = 0;
+            }
+        }
+
+        document.getElementById("yesButton").addEventListener("click", function() {
+            alert("That's wonderful! Happy Valentine's Day!");
+        });
+
+        // Create hearts
+        for (var i = 0; i < 10; i++) {
+            createHeart();	
+        }
+
+        // Function to create a heart
+        function createHeart() {
+            var heart = new Image();
+            // Replace 'your_image_path.png' with the actual path to your heart image
+            heart.src = "file:///C:/Users/John/Desktop/Websitetest/templates/images/sanrio.png"
+            heart.className = "heart";
+            heart.style.left = Math.random() * window.innerWidth + "px";
+            heart.style.top = Math.random() * window.innerHeight + "px";
+            document.body.appendChild(heart);
+        }
+    </script>
+</body>
+</html>
