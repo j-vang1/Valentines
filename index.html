@@ -113,26 +113,28 @@ function moveButton() {
         });
 
         // Create hearts
-        for (var i = 0; i < 10; i++) {
+        for (var i = 0; i < 25; i++) {
             createHeart();	
         }
 
         // Function to create a heart
-        function createHeart() {
-            var heart = new Image();
-	    var imagePaths = [
+     function createHeart() {
+    var heart = new Image();
+    // Array of image paths
+    var imagePaths = [
         "sanrio.png",
         "sanrio2.png",
         "sanrio3.png",
-		    ];
-            // Replace 'your_image_path.png' with the actual path to your heart image
-          var randomIndex = Math.floor(Math.random() * imagePaths.length);
+        // Add more image paths as needed
+    ];
+    // Randomly select an image path
+    var randomIndex = Math.floor(Math.random() * imagePaths.length);
     heart.src = imagePaths[randomIndex];
     heart.className = "heart";
     heart.style.left = Math.random() * window.innerWidth + "px";
     heart.style.top = Math.random() * window.innerHeight + "px";
     document.body.appendChild(heart);
-        }
+}
     </script>
 </body>
 </html>
