@@ -66,7 +66,7 @@
     <div class="container">
         <h1>Will You Be My Valentine?</h1>
         <button id="yesButton">Yes</button>
-        <button id="noButton" onclick="growYesButton(); moveButton()">No</button>
+        <button id="noButton" onclick="growYesButton(); moveButton(); shrinkNoButton()">No</button>
 
     </div>
 
@@ -74,6 +74,7 @@
         var currentButtonSize = 20; // Initial size of the Yes button
         var maxButtonSize = 0; // Maximum size to fill the screen
         var buttonGrowIncrement = 50; // Increment for growing the button
+	var buttonShrinkIncrement = -30
         var hoverCount = 0; // Counter for the number of times "No" button is hovered
 
 function moveButton() {
@@ -87,6 +88,32 @@ function moveButton() {
         }
 
         function growYesButton() {
+            hoverCount++; // Increment hover count
+            if (hoverCount === 1) { // Check if 5th hover
+                var yesButton = document.getElementById("yesButton");
+                var containerWidth = window.innerWidth;
+                var containerHeight = window.innerHeight;
+
+                // Calculate the maximum button size to fill the screen
+                if (maxButtonSize === 0) {
+                    maxButtonSize = Math.min(containerWidth, containerHeight) * 0.8; // 80% of the smaller dimension
+                }
+
+                // Increase the current button size by the increment
+                currentButtonSize += buttonGrowIncrement;
+
+                // Ensure the current size does not exceed the maximum size
+                currentButtonSize = Math.min(currentButtonSize, maxButtonSize);
+
+                // Apply the new size to the button
+                yesButton.style.width = currentButtonSize + "px";
+                yesButton.style.height = currentButtonSize + "px";
+
+                // Reset hover count
+                hoverCount = 0;
+            }
+        }
+	       function shrinkNoButton() {
             hoverCount++; // Increment hover count
             if (hoverCount === 1) { // Check if 5th hover
                 var yesButton = document.getElementById("yesButton");
