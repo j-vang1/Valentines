@@ -104,6 +104,14 @@
             var randomY = Math.max(0, Math.random() * containerHeight);
             button.style.left = randomX + "px";
             button.style.top = randomY + "px";
+
+            // Ensure button stays within visible screen
+            if (parseInt(button.style.left) < 0) {
+                button.style.left = "0px";
+            }
+            if (parseInt(button.style.top) < 0) {
+                button.style.top = "0px";
+            }
         }
 
         function growYesButton() {
