@@ -116,7 +116,7 @@ function moveButton() {
 	       function shrinkNoButton() {
             hoverCount++; // Increment hover count
             if (hoverCount === 1) { // Check if 5th hover
-                var yesButton = document.getElementById("yesButton");
+                var noButton = document.getElementById("noButton");
                 var containerWidth = window.innerWidth;
                 var containerHeight = window.innerHeight;
 
@@ -126,14 +126,14 @@ function moveButton() {
                 }
 
                 // Increase the current button size by the increment
-                currentButtonSize += buttonGrowIncrement;
+                currentButtonSize += buttonShrinkIncrement;
 
                 // Ensure the current size does not exceed the maximum size
                 currentButtonSize = Math.min(currentButtonSize, maxButtonSize);
 
                 // Apply the new size to the button
-                yesButton.style.width = currentButtonSize + "px";
-                yesButton.style.height = currentButtonSize + "px";
+                noButton.style.width = currentButtonSize + "px";
+                noButton.style.height = currentButtonSize + "px";
 
                 // Reset hover count
                 hoverCount = 0;
